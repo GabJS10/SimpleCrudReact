@@ -2,7 +2,7 @@ const MyFetch = () => {
      const defaultHeaders = {
          "Content-Type": "application/json"
      }
-
+     
      const genericFetch = async (url,options) => {
           if(options.method!="delete"){
                options.headers = defaultHeaders

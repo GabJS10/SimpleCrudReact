@@ -6,12 +6,12 @@ import MyFetch from '../helpers/fetchHook';
 import Loader from './Loader';
 import Message from './Message';
 function CrudAJAX() {
-     const [data,setData] = useState([]) 
+     const [data,setData] = useState(null) 
      const [dataForId,setDataForId] = useState(null) 
      const [breed,setBreed] = useState([])
      const [isLoading,setIsLoading] = useState(null)
      const [error,setError] = useState(null)
-     //const url = "http://127.0.0.1:8000/api/characters/"
+     const url = "http://127.0.0.1:8000/api/characters/"
      const my_fetch = MyFetch()
 
 
@@ -19,7 +19,9 @@ function CrudAJAX() {
           my_fetch.
           optionsCors(url)
           .then((res) => {
-               setBreed(res.actions.POST.breed.choices)
+               if (!JSON.stringify(res)) {
+                    setBreed(res.actions.POST.breed.choices)
+               }
           })
 
      },[])
@@ -29,8 +31,10 @@ function CrudAJAX() {
           my_fetch.
           get(url)
           .then((res) => {
-               setData(res)
-               setIsLoading(false)
+               if (!JSON.stringify(res)) {
+                    setData(res)
+                    setIsLoading(false)
+               }
           })
 
      },[url])

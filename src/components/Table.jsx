@@ -31,8 +31,7 @@ function Table({ data, deleted, setDataForId }) {
                          </tr>
                     </thead>
                     <tbody>
-                         {data.map(character => <TableData key={character.id} character={character} deleted={deleted} setDataForId={setDataForId} />)}
-
+                         {data && data.map(character => <TableData key={character.id} character={character} deleted={deleted} setDataForId={setDataForId} />)}
                     </tbody>
                </table>
           </div>
